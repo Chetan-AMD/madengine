@@ -907,13 +907,14 @@ class RunModels:
 
 
         # Check if model is deprecated or not  
+    
         if model_info.get("is_deprecated", False):  
-            if "--force-deprecated" in self.args.tags:  
-                print(f"Running deprecated model {model_info['name']} due to --force-deprecated tag.")  
+            if self.args.force_deprecated:  
+                print(f"WARNING: Running deprecated model {model_info['name']} due to --force-deprecated flag.")  
             else:  
-                print(f"WARNING: Model {model_info['name']} has been deprecated.")  
+                print(f"WARNING: Model {model_info['name']} has been deprecated. Skipping execution.")  
+                return True  # exit early
 
-                return True  # Return success to not affect overall status  
 
         
         # check if model is supported on current gpu architecture, if not skip.
