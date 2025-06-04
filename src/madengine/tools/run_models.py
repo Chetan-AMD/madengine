@@ -913,7 +913,7 @@ class RunModels:
             else:  
                 print(f"WARNING: Model {model_info['name']} has been deprecated.")  
 
-                    return True  # Return success to not affect overall status  
+                return True  # Return success to not affect overall status  
 
         
         # check if model is supported on current gpu architecture, if not skip.
